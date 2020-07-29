@@ -43,8 +43,9 @@ void setup() {
     // FastLED.addLeds<TM1804, DATA_PIN, RGB>(leds, NUM_LEDS);
     // FastLED.addLeds<TM1809, DATA_PIN, RGB>(leds, NUM_LEDS);
     // FastLED.addLeds<WS2811, DATA_PIN, RGB>(leds, NUM_LEDS);
-    // FastLED.addLeds<WS2812, DATA_PIN, RGB>(leds, NUM_LEDS);
-    FastLED.addLeds<WS2812B, DATA_PIN, RGB>(leds, NUM_LEDS);
+    // FastLED.addLeds<WS2812, DATA_PIN, RGB>(leds, NUM_LEDS);    // GRB ordering is typical
+    // FastLED.addLeds<WS2812B, DATA_PIN, RGB>(leds, NUM_LEDS);   // GRB ordering is typical
+    // FastLED.addLeds<WS2852, DATA_PIN, RGB>(leds, NUM_LEDS);    // GRB ordering is typical
     // FastLED.addLeds<NEOPIXEL, DATA_PIN>(leds, NUM_LEDS);
     // FastLED.addLeds<APA104, DATA_PIN, RGB>(leds, NUM_LEDS);
     // FastLED.addLeds<UCS1903, DATA_PIN, RGB>(leds, NUM_LEDS);
@@ -75,19 +76,9 @@ void setup() {
 }
  
 void loop() {
-   //red
+//red
     for(int i=START_LED; i<=STOP_LED; i++){
-        Serial.print("red  ");
-        Serial.println(i);
-        leds[i] = CRGB(BRIGHTNESS, 0, 0);
-        FastLED.show();
-        delay(DELAY);
-        leds[i] = CRGB(0,0,0);
-        FastLED.show();
-    }
-//green
-    for(int i=START_LED; i<=STOP_LED; i++){
-        Serial.print("green  ");
+        Serial.print("Red  ");
         Serial.println(i);
         leds[i] = CRGB(0, BRIGHTNESS, 0);
         FastLED.show();
@@ -95,6 +86,18 @@ void loop() {
         leds[i] = CRGB(0,0,0);
         FastLED.show();
     }
+
+//green
+    for(int i=START_LED; i<=STOP_LED; i++){
+        Serial.print("Green  ");
+        Serial.println(i);
+        leds[i] = CRGB(BRIGHTNESS, 0, 0);
+        FastLED.show();
+        delay(DELAY);
+        leds[i] = CRGB(0,0,0);
+        FastLED.show();
+    }
+
 //blue
     for(int i=START_LED; i<=STOP_LED; i++){
         Serial.print("Blue  ");
@@ -105,6 +108,7 @@ void loop() {
         leds[i] = CRGB(0,0,0);
         FastLED.show();
     }
+
 //white
     for(int i=START_LED; i<=STOP_LED; i++){
         Serial.print("White ");
