@@ -13,7 +13,7 @@
 //
 // GNU General Public Licence V3.0
 //
-// Sketch ver 1.0
+// Sketch ver 1.1
 
 #include "FastLED.h"
 
@@ -21,7 +21,6 @@
 //#define CLOCK_PIN 13  // your clock pin if need
 
 // How many leds in your strip?
-#define num leds
 const int NUM_LEDS = 288;        //  number of leds on your strip
 int BRIGHTNESS = 255;     //  value between 0 and 255
 int DELAY = 0;            // 1/1000 sec, so 1000 is 1 sec
@@ -73,6 +72,8 @@ void setup() {
         leds[i] = CRGB(0,0,0);
         FastLED.show();
     }
+    FastLED.clear();
+    
     Serial.println("Ready. Start looping.");
 }
  
@@ -84,8 +85,9 @@ void loop() {
         leds[i] = CRGB(0, BRIGHTNESS, 0);
         FastLED.show();
         delay(DELAY);
-        leds[i] = CRGB(0,0,0);
-        FastLED.show();
+        FastLED.clear();
+        //leds[i] = CRGB(0,0,0);
+        //FastLED.show();
     }
 
 //green
@@ -95,8 +97,9 @@ void loop() {
         leds[i] = CRGB(BRIGHTNESS, 0, 0);
         FastLED.show();
         delay(DELAY);
-        leds[i] = CRGB(0,0,0);
-        FastLED.show();
+        FastLED.clear();
+        //leds[i] = CRGB(0,0,0);
+        //FastLED.show();
     }
 
 //blue
@@ -106,8 +109,9 @@ void loop() {
         leds[i] = CRGB(0, 0, BRIGHTNESS);
         FastLED.show();
         delay(DELAY);
-        leds[i] = CRGB(0,0,0);
-        FastLED.show();
+        FastLED.clear();
+        //leds[i] = CRGB(0,0,0);
+        //FastLED.show();
     }
 
 //white
@@ -117,7 +121,8 @@ void loop() {
         leds[i] = CRGB(BRIGHTNESS, BRIGHTNESS, BRIGHTNESS);
         FastLED.show();
         delay(DELAY);
-        leds[i] = CRGB(0,0,0);
-        FastLED.show();
+        FastLED.clear();
+        //leds[i] = CRGB(0,0,0);
+        //FastLED.show();
     }
 }
