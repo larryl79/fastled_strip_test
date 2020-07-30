@@ -67,6 +67,9 @@ void setup() {
     // FastLED.addLeds<APA102, DATA_PIN, CLOCK_PIN, RGB>(leds, NUM_LEDS);
     // FastLED.addLeds<DOTSTAR, DATA_PIN, CLOCK_PIN, RGB>(leds, NUM_LEDS);
 
+    FastLED.setDither(false);
+    FastLED.setCorrection(TypicalLEDStrip);
+ 
     // turn off all led
       for(int i=0; i< NUM_LEDS; i++){
         leds[i] = CRGB(0,0,0);
