@@ -13,7 +13,7 @@
 //
 // GNU General Public Licence V3.0
 //
-// Sketch ver 0.9
+// Sketch ver 1.0
 
 #include "FastLED.h"
 
@@ -21,11 +21,12 @@
 //#define CLOCK_PIN 13  // your clock pin if need
 
 // How many leds in your strip?
-#define NUM_LEDS 288    //  number of leds on your strip
-#define BRIGHTNESS 255  //  value between 0 and 255
-#define DELAY 0         // 1/1000 sec, so 1000 is 1 sec
-#define START_LED 0     // strip first led address is 0
-#define STOP_LED 287    // maximum last led address is NUM_LEDS - 1
+#define num leds
+const int NUM_LEDS = 288;        //  number of leds on your strip
+int BRIGHTNESS = 255;     //  value between 0 and 255
+int DELAY = 0;            // 1/1000 sec, so 1000 is 1 sec
+int START_LED = 0;        // strip first led address is 0
+int STOP_LED  = 287;      // maximum last led address is NUM_LEDS - 1
 
 CRGB leds[NUM_LEDS];
  
@@ -35,8 +36,8 @@ void setup() {
   }
   Serial.println("");
   Serial.println("Booting...");
-  //if ( STOP_LED > NUM_LEDS ) { const  STOP_LED = NUM_LEDS - 1; }
-  //if ( STOP_LED < START_LED ) { const STOP_LED = STARTLED; }
+  if ( STOP_LED > NUM_LEDS ) {   STOP_LED =  NUM_LEDS - 1; }
+  if ( STOP_LED < START_LED ) { STOP_LED =  START_LED; }
   
     // Uncomment/edit one of the following lines for your leds arrangement.
     // FastLED.addLeds<TM1803, DATA_PIN, RGB>(leds, NUM_LEDS);
@@ -68,7 +69,7 @@ void setup() {
     // FastLED.addLeds<DOTSTAR, DATA_PIN, CLOCK_PIN, RGB>(leds, NUM_LEDS);
 
     // turn off all led
-      for(int i=0; i<NUM_LEDS; i++){
+      for(int i=0; i< NUM_LEDS; i++){
         leds[i] = CRGB(0,0,0);
         FastLED.show();
     }
@@ -77,7 +78,7 @@ void setup() {
  
 void loop() {
 //red
-    for(int i=START_LED; i<=STOP_LED; i++){
+    for(int i= START_LED; i<= STOP_LED; i++){
         Serial.print("Red  ");
         Serial.println(i);
         leds[i] = CRGB(0, BRIGHTNESS, 0);
